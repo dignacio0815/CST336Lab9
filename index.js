@@ -42,6 +42,7 @@ app.get("/results", function(req, res) {
         if(error) throw error;
         if(found) {
             console.log(found);
+            console.log(stmt)
             let s = new Set();
             for(let i = 0; i < found.length; i++) {
                 s.add(found[i].portrait);
