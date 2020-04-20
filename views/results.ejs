@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+    <div class="container">
+        <div class="jumbotron">
+            <button id="searchAgain" class="col-sm-4 btn btn-primary btn-block" onclick="location.href='/';">Search again</button>    
+            <br>
+            <div>
+                <h3>The Authors:</h3> <br>
+                <div class="row">
+                    <% img.forEach(function(i){ %>
+                        <img src="<%=i%>" height="30%" width="30%">
+                    <% }) %>
+                </div>
+                <h3>The Quotes:</h3>
+                <% for(let i = 0; i < data.length; i++) { %>
+                    <div>Author: <%=data[i].firstName%> <%=data[i].lastName%> <br> <%=data[i].quote%> </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+<%- include("partials/footer") %>
