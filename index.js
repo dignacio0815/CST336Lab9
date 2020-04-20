@@ -9,10 +9,17 @@ const connection = mysql.createConnection({
     host:"localhost",
     user:"denize",
     password:"denize",
-    database:"quotes_db"
+    database:"quotes_db",
 });
 
-connection.connect();
+// connection.connect();
+connection.connect(function(err) {
+  if (err) {
+    console.error('Error connecting to MySQL: ' + err.stack);
+    return;
+  }
+   console.log('connected as id ' + connection.threadId);
+});
 
 // routes
 app.get("/", function(req, res) {
@@ -42,7 +49,6 @@ app.get("/results", function(req, res) {
             res.render("results", {data: found, img : s});
         }
     })    
-    
 });
 
 app.listen(process.env.PORT || 3000, function() {
