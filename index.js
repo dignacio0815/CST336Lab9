@@ -6,11 +6,15 @@ app.set('view engine', 'ejs');
 
 // mySQL DBMS
 const connection = mysql.createConnection({
-    HOST: "us-cdbr-iron-east-01.cleardb.net",
-    USER: "b473ff65a7ffb2",
-    PASSWORD: "1449f782",
-    DB: "heroku_1d8a9ad6b1fca3b",
-    port: '/var/lib/mysql/mysql.sock'
+    // HOST: "us-cdbr-iron-east-01.cleardb.net",
+    // USER: "b473ff65a7ffb2",
+    // PASSWORD: "1449f782",
+    // DB: "heroku_1d8a9ad6b1fca3b",
+    // port: '/var/lib/mysql/mysql.sock'
+    HOST: 'localhost',
+    user: 'denize',
+    password: 'denize',
+    db: 'quotes_db'
 });
 
 // connection.connect();
@@ -53,6 +57,6 @@ app.get("/results", function(req, res) {
     })    
 });
 
-app.listen(process.env.PORT || 3000 || 3306, function() {
+app.listen(process.env.PORT || 3000, function() {
     console.log("Server is starting...");
 });
