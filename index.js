@@ -6,15 +6,15 @@ app.set('view engine', 'ejs');
 
 // mySQL DBMS
 const connection = mysql.createConnection({
-    // HOST: "us-cdbr-iron-east-01.cleardb.net",
-    // USER: "b473ff65a7ffb2",
-    // PASSWORD: "1449f782",
-    // DB: "heroku_1d8a9ad6b1fca3b",
-    // port: '/var/lib/mysql/mysql.sock'
-    HOST: 'localhost',
-    user: 'denize',
-    password: 'denize',
-    db: 'quotes_db'
+    host:"localhost",
+    user:"denize",
+    password:"denize",
+    database:"quotes_db"
+    
+    // host: "us-cdbr-iron-east-01.cleardb.net",
+    // username: "b473ff65a7ffb2",
+    // password: "1449f782",
+    // database: "heroku_1d8a9ad6b1fca3b"
 });
 
 // connection.connect();
@@ -46,8 +46,8 @@ app.get("/results", function(req, res) {
     connection.query(stmt, function(error, found){
         if(error) throw error;
         if(found) {
-            // console.log(found);
-            // console.log(stmt)
+            console.log(found);
+            console.log(stmt)
             let s = new Set();
             for(let i = 0; i < found.length; i++) {
                 s.add(found[i].portrait);
@@ -57,6 +57,6 @@ app.get("/results", function(req, res) {
     })    
 });
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3000 || 3306, function() {
     console.log("Server is starting...");
 });
