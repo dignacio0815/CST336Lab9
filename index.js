@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   USER: "b473ff65a7ffb2",
   PASSWORD: "1449f782",
   DB: "heroku_1d8a9ad6b1fca3b",
-  port: '/var/run/mysqld/mysqld.sock'
+  port: '/var/lib/mysql/mysql.sock'
 });
 
 // connection.connect();
