@@ -6,10 +6,10 @@ app.set('view engine', 'ejs');
 
 // mySQL DBMS
 const connection = mysql.createConnection({
-    host:"localhost",
-    user:"denize",
-    password:"denize",
-    database:"quotes_db",
+      HOST: "us-cdbr-iron-east-01.cleardb.net",
+  USER: "b473ff65a7ffb2",
+  PASSWORD: "1449f782",
+  DB: "heroku_1d8a9ad6b1fca3b",
     port:3306
 });
 
