@@ -10,7 +10,15 @@ const connection = mysql.createConnection({
     user:"denize",
     password:"denize",
     database:"quotes_db",
+    port:3306
 });
+
+console.log({
+    host            : process.env.MYSQL_HOST,
+    user            : process.env.MYSQL_USER,
+    password        : process.env.MYSQL_SECRET,
+    database        : process.env.MYSQL_DB
+ })
 
 // connection.connect();
 connection.connect(function(err) {
@@ -41,8 +49,8 @@ app.get("/results", function(req, res) {
     connection.query(stmt, function(error, found){
         if(error) throw error;
         if(found) {
-            console.log(found);
-            console.log(stmt)
+            // console.log(found);
+            // console.log(stmt)
             let s = new Set();
             for(let i = 0; i < found.length; i++) {
                 s.add(found[i].portrait);
