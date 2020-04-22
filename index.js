@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     // password:"denize",
     // database:"quotes_db",
     port:3307,
-    host: "localhost",
+    host: "cloud_instance_private_ip",
     username: "b473ff65a7ffb2",
     password: "1449f782",
     database: "heroku_1d8a9ad6b1fca3b"
