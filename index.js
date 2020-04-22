@@ -10,11 +10,10 @@ const connection = mysql.createConnection({
     // user:"denize",
     // password:"denize",
     // database:"quotes_db",
-    host: "cloud_instance_private_ip",
+    host: "localhost",
     username: "b473ff65a7ffb2",
     password: "1449f782",
     database: "heroku_1d8a9ad6b1fca3b",
-    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
 });
 
 // connection.connect();
