@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+    <div class='container'>
+	<div class='jumbotron'>
+		<h1>Author Info</h1>
+			<div class='form-group row'>
+			<img class='col-sm-4 portrait' src=<%=author[0].portrait%> >
+            <div class='col-sm-4 info'>
+              <h3><%=author[0].firstName%> <%=author[0].lastName%></h3>
+              <div>Born: <%=author[0].dob%></div>
+              <div>Dead: <%=author[0].dod%></div>
+              <div>Sex: <%=author[0].sex%></div>
+              <div>Profession: <%=author[0].profession%></div>
+              <div>Country: <%=author[0].country%></div>
+              <div class='bio'><%=author[0].biography%></div>
+            </div>
+			</div>
+		</form>
+	</div>
+</div>
+<%- include("partials/footer") %>

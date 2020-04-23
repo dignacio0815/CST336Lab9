@@ -1,7 +1,7 @@
 var express = require("express");
 var mysql = require("mysql");
 var app = express();
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 // mySQL DBMS
@@ -9,12 +9,11 @@ const connection = mysql.createConnection({
     // host:"localhost",
     // user:"denize",
     // password:"denize",
-    // database:"quotes_db",
+    // database:"quotes_db"
     host: "us-cdbr-iron-east-01.cleardb.net",
-    // host: "localhost",
     username: "b473ff65a7ffb2",
     password: "1449f782",
-    database: "heroku_1d8a9ad6b1fca3b",
+    database: "heroku_1d8a9ad6b1fca3b"
 });
 
 // connection.connect();
@@ -41,7 +40,7 @@ app.get("/results", function(req, res) {
     } else if(/\s/.test(param)) {
         stmt += ' l9_author.firstName=\'' + param.split(" ")[0] + '\' or l9_author.lastName=\'' + param.split(" ")[1] + '\';';
     } else {
-        stmt += ' l9_quotes.quote like \'' + "%" + param  + "%" + '\' or l9_quotes.category=\'' + param + '\';';
+        stmt += ' l9_quotes.quote like \'' + "%" + param  + "%" + '\' or l9_quotes.category=\'' + param + '\' or l9_author.firstName=\'' + param + '\' or l9_author.lastName=\'' + param + '\';';
     }
     connection.query(stmt, function(error, found){
         if(error) throw error;
@@ -52,9 +51,28 @@ app.get("/results", function(req, res) {
             for(let i = 0; i < found.length; i++) {
                 s.add(found[i].portrait);
             }
+            console.log(found.length)
+            console.log('\n\n\n\n')
+            
+            found.forEach(function(a){
+                console.log(a.authorId)
+            })
+            
             res.render("results", {data: found, img : s});
         }
     })    
+});
+
+app.get("/results/:aid", function(req, res) {
+   console.log(req.params.aid);
+   var stmt = "SELECT * FROM l9_author WHERE l9_author.authorId=\'" + req.params.aid + "\';";
+   connection.query(stmt, function(error, found) {
+       if(error) throw error;
+       if(found) {
+           console.log(found);
+           res.render("authorInfo", {author:found});
+       }
+   });
 });
 
 app.listen(process.env.PORT || 3000 || 3306, function() {
