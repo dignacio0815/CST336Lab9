@@ -13,8 +13,6 @@ var db_config = {
     password: "1449f782",
     database: "heroku_1d8a9ad6b1fca3b"
 }
-
-const connection = mysql.createConnection(db_config);
     // host:"localhost",
     // user:"denize",
     // password:"denize",
